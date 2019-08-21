@@ -9,8 +9,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var task = [Task]()
+    
+    private func addTask(){
+        self.task.append(Task(name: "Wash the car"))
+    }
+    
     var body: some View {
-        Text("Hello World")
+        
+        List{
+            Button(action: addTask){
+                Text("Add Task")
+            }
+            
+            ForEach(task){ task in
+                Text(task.name)
+            }
+            
+        }
+        
     }
 }
 
